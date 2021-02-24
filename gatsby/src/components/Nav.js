@@ -14,9 +14,10 @@ const NavStyles = styled.nav`
     text-align: center;
     list-style: none;
     display: grid;
-    grid-template-columns: 1fr 1fr auto 1fr 1fr; 
+    grid-template-columns: 1fr 1fr auto 1fr 1fr;
     grid-gap: 2rem;
     align-items: center;
+    margin-top: -6rem;
   }
   li {
     --rotate: -2deg;
