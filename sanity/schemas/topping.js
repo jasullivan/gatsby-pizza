@@ -1,7 +1,7 @@
 import { FaPepperHot as icon } from 'react-icons/fa';
 
 export default {
-  // computer name
+  // computer name of dataset
   name: 'topping',
   // visible title
   title: 'Toppings',

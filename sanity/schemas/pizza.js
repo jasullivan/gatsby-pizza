@@ -1,13 +1,14 @@
 import { MdLocalPizza as icon } from 'react-icons/md';
 
 export default {
-  // computer name
+  // computer name of dataset
   name: 'pizza',
   // visible title
   title: 'Pizzas',
   type: 'document',
   // destructured as it's taking icon from the object with the same name
   icon,
+  // input fields to fillout in the CMS
   fields: [
     {
       name: 'name',
@@ -47,29 +48,33 @@ export default {
       title: 'Toppings',
       type: 'array',
       // type topping is the name in topping.js
+      // this uses the array and the reference schema types
       of: [{ type: 'reference', to: [{ type: 'topping' }] }],
     },
   ],
+  // this creates a custom preview of each pizza in the CMS admin
   preview: {
     select: {
-      // this is diff from the toppings version name or title it can be anything
+      // title is just how it appears in your preview function. so it could be name, title, called anything
       title: 'name',
       media: 'image',
-      // gets the first 4 toppings
+      // this is just the sanity syntax to get toppings based on index - gets the first 4 topping, from toppings
+      // says get the toppings array, grab the item at index 0 and grab it's name
+      // NB the toppings array is created from this schema not topping.js
       topping0: 'toppings.0.name',
       topping1: 'toppings.1.name',
       topping2: 'toppings.2.name',
       topping3: 'toppings.3.name',
     },
-    // fields.name and fields.vegetarian has been destructured
+    // fields.name and fields.vegetarian has been destructured. ...toppings puts them in a new object called toppings
     prepare: ({ title, media, ...toppings }) => {
+      // Object.values() turns toppings object into an array to allow join to work
       // filter undefined toppings out
       const tops = Object.values(toppings).filter(Boolean);
       // return preview object for the pizza
       return {
         title,
         media,
-        // Object.values() turns toppings object into an array to allow join to work
         subtitle: tops.join(', '),
       };
     },
