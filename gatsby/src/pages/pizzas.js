@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 
 export default function PizzasPage() {
   return (
@@ -7,3 +8,6 @@ export default function PizzasPage() {
     </>
   );
 }
+
+// query is not a special name - can be called anything
+export const query = graphql``;
