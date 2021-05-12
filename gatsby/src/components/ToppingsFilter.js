@@ -34,6 +34,7 @@ function countPizzasInToppings(pizzas) {
     .reduce((acc, topping) => {
       // check if this is an existing topping
       const existingTopping = acc[topping.id];
+      // console.log(existingTopping, ' existingTopping');
       if (existingTopping) {
         console.log(existingTopping.name, ' existingTopping');
         // if it is, increment by 1
@@ -54,6 +55,7 @@ function countPizzasInToppings(pizzas) {
   const sortedToppings = Object.values(counts).sort(
     (a, b) => b.count - a.count
   );
+  // console.log(sortedToppings)
   return sortedToppings;
 }
 
@@ -83,10 +85,12 @@ export default function ToppingsFilter() {
   // console.clear();
   // destructuring for a console.log
   // console.log({ toppings, pizzas });
+  console.log(pizzas.nodes);
+  console.log(pizzas.nodes.map((pizza) => pizza.toppings).flat());
 
   // count how many pizzas are in each topping
   const toppingsWithCounts = countPizzasInToppings(pizzas.nodes);
-  console.log(toppingsWithCounts, 'hello');
+  // console.log(toppingsWithCounts, 'hello');
 
   // loop over list of toppings so can display the topping and the count of pizza in that topping
 
